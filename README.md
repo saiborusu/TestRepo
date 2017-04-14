@@ -46,3 +46,34 @@
     }
   }
 }
+
+----
+require('E:/Project/lib/nightwatch/bin/runner.js');
+----
+module.exports = {
+  'Demo test Google' : function (browser) {
+    browser
+      .windowMaximize()
+      .url('http://www.google.com')
+      .waitForElementVisible('body', 1000)
+      .setValue('input[type=text]', 'nightwatch')
+      .waitForElementVisible('button[name=btnG]', 1000)
+      .click('button[name=btnG]')
+      .pause(1000)
+      .assert.containsText('#main', 'Night Watch')
+      .end();
+  }
+};
+----
+"selenium" : {
+    "start_process" : true,
+    "server_path" : "lib/selenium/selenium-server-standalone-2.45.0.jar",
+    "start_session" : true,
+    "log_path" : "",
+    "host" : "127.0.0.1",
+    "port" : 4444,
+    "cli_args" : {
+      "webdriver.chrome.driver" : "",
+      "webdriver.ie.driver" : ""
+    }
+  }
